@@ -1,0 +1,116 @@
+2023-03-06 11:01:36,172 - app - INFO - process:16 - API Request Received. User ID: 12515
+2023-03-06 11:01:37,515 - app - INFO - process:77 - user_ids_detected: <generator object RecogService.process.<locals>.<genexpr> at 0x000002149F5DD248>
+2023-03-06 11:01:37,516 - app - INFO - process:79 - API returned success with exception: Found more than 1 face, and one face matched. User ID: 12515
+2023-03-06 11:10:05,058 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:10:33,408 - app - INFO - updateDataset:230 - Datasets updated!
+2023-03-06 11:10:33,409 - app - INFO - encodeFaces:149 - Encoding Faces... (This may take a while)
+2023-03-06 11:11:35,584 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:11:43,926 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:12:08,124 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:12:14,518 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:12:24,530 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:12:52,220 - app - INFO - updateDataset:230 - Datasets updated!
+2023-03-06 11:12:52,222 - app - INFO - encodeFaces:149 - Encoding Faces... (This may take a while)
+2023-03-06 11:15:25,803 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:15:44,463 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:16:18,211 - app - INFO - updateDataset:230 - Datasets updated!
+2023-03-06 11:16:18,213 - app - INFO - encodeFaces:149 - Encoding Faces... (This may take a while)
+2023-03-06 11:19:46,012 - app - INFO - encodeFaces:159 - Encoding Done!
+2023-03-06 11:20:07,710 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:21:04,875 - app - INFO - updateDataset:230 - Datasets updated!
+2023-03-06 11:21:04,879 - app - INFO - encodeFaces:149 - Encoding Faces... (This may take a while)
+2023-03-06 11:24:34,829 - app - INFO - encodeFaces:159 - Encoding Done!
+2023-03-06 11:24:34,903 - app - INFO - <module>:9 - DEB - scheduler is running
+2023-03-06 11:26:18,216 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:26:42,264 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:27:55,677 - app - INFO - updateDataset:230 - Datasets updated!
+2023-03-06 11:27:55,680 - app - INFO - encodeFaces:149 - Encoding Faces... (This may take a while)
+2023-03-06 11:31:29,507 - app - INFO - encodeFaces:159 - Encoding Done!
+2023-03-06 11:31:29,587 - app - INFO - <module>:9 - DEB - scheduler is running
+2023-03-06 11:32:07,632 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:32:11,040 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:32:32,701 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:33:37,960 - app - INFO - updateDataset:230 - Datasets updated!
+2023-03-06 11:33:37,963 - app - INFO - encodeFaces:149 - Encoding Faces... (This may take a while)
+2023-03-06 11:37:11,216 - app - INFO - encodeFaces:159 - Encoding Done!
+2023-03-06 11:37:11,284 - app - INFO - <module>:8 - DEB - scheduler is running
+2023-03-06 11:40:41,616 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:41:03,428 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:41:32,609 - app - INFO - updateDataset:230 - Datasets updated!
+2023-03-06 11:41:32,611 - app - INFO - encodeFaces:149 - Encoding Faces... (This may take a while)
+2023-03-06 11:41:33,195 - app - INFO - encodeFaces:159 - Encoding Done!
+2023-03-06 11:41:33,299 - app - INFO - <module>:8 - DEB - scheduler is running
+2023-03-06 11:41:57,711 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:42:24,031 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:50:17,063 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:51:09,116 - app - INFO - updateDataset:230 - Datasets updated!
+2023-03-06 11:51:09,118 - app - INFO - encodeFaces:149 - Encoding Faces... (This may take a while)
+2023-03-06 11:51:09,632 - app - INFO - encodeFaces:159 - Encoding Done!
+2023-03-06 11:51:09,694 - app - INFO - <module>:8 - DEB - scheduler is running
+2023-03-06 11:52:12,421 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:52:17,469 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:53:07,304 - app - INFO - updateDataset:230 - Datasets updated!
+2023-03-06 11:53:07,306 - app - INFO - encodeFaces:149 - Encoding Faces... (This may take a while)
+2023-03-06 11:53:07,832 - app - INFO - encodeFaces:159 - Encoding Done!
+2023-03-06 11:57:00,015 - app - INFO - dailyEncode:10 - Running daily dataset update and encoding...
+2023-03-06 11:57:00,017 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:57:41,591 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 11:57:46,911 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 12:37:47,542 - app - INFO - updateDataset:162 - Updating datasets... (This may took a while)
+2023-03-06 12:38:45,689 - app - INFO - updateDataset:230 - Datasets updated!
+2023-03-06 12:38:45,693 - app - INFO - encodeFaces:149 - Encoding Faces... (This may take a while)
+2023-03-06 12:38:46,237 - app - INFO - encodeFaces:159 - Encoding Done!
+2023-03-07 14:26:34,568 - app - INFO - process:27 - eeeeee
+2023-03-07 14:28:17,202 - app - INFO - process:30 - EEEEEEEEEEEEEEEEEE
+2023-03-07 14:41:44,002 - app - INFO - getFaceCoordinates:67 - HMMM
+2023-03-07 14:41:44,003 - app - INFO - getFaceCoordinates:67 - HMMM
+2023-03-08 10:00:38,970 - app - INFO - encodeFaces:187 - Encoding Faces... (This may take a while)
+2023-03-08 10:01:10,498 - app - INFO - encodeFaces:197 - Encoding Done!
+2023-03-08 10:06:55,181 - app - INFO - encodeFaces:187 - Encoding Faces... (This may take a while)
+2023-03-08 10:07:20,394 - app - INFO - encodeFaces:197 - Encoding Done!
+2023-03-08 10:09:39,543 - app - INFO - encodeFaces:187 - Encoding Faces... (This may take a while)
+2023-03-08 10:10:02,214 - app - INFO - encodeFaces:197 - Encoding Done!
+2023-03-08 10:10:33,408 - app - INFO - encodeFaces:187 - Encoding Faces... (This may take a while)
+2023-03-08 10:10:56,588 - app - INFO - encodeFaces:197 - Encoding Done!
+2023-03-08 10:12:14,256 - app - INFO - encodeFaces:187 - Encoding Faces... (This may take a while)
+2023-03-08 10:12:36,818 - app - INFO - encodeFaces:197 - Encoding Done!
+2023-03-08 10:14:10,015 - app - INFO - encodeFaces:187 - Encoding Faces... (This may take a while)
+2023-03-08 10:14:32,689 - app - INFO - encodeFaces:197 - Encoding Done!
+2023-03-08 10:15:53,415 - app - INFO - encodeFaces:189 - Encoding Faces... (This may take a while)
+2023-03-08 10:16:15,646 - app - INFO - encodeFaces:199 - Encoding Done!
+2023-03-08 10:18:50,994 - app - INFO - encodeFaces:190 - Encoding Faces... (This may take a while)
+2023-03-08 10:19:15,055 - app - INFO - encodeFaces:200 - Encoding Done!
+2023-03-08 10:21:07,535 - app - INFO - encodeFaces:190 - Encoding Faces... (This may take a while)
+2023-03-08 10:21:31,446 - app - INFO - encodeFaces:200 - Encoding Done!
+2023-03-08 10:23:13,856 - app - INFO - encodeFaces:190 - Encoding Faces... (This may take a while)
+2023-03-08 10:23:36,311 - app - INFO - encodeFaces:200 - Encoding Done!
+2023-03-08 10:24:52,029 - app - INFO - encodeFaces:190 - Encoding Faces... (This may take a while)
+2023-03-08 10:25:18,305 - app - INFO - encodeFaces:200 - Encoding Done!
+2023-03-08 10:29:23,197 - app - INFO - encodeFaces:190 - Encoding Faces... (This may take a while)
+2023-03-08 10:29:51,767 - app - INFO - encodeFaces:200 - Encoding Done!
+2023-03-08 10:31:14,750 - app - INFO - encodeFaces:190 - Encoding Faces... (This may take a while)
+2023-03-08 10:31:42,652 - app - INFO - encodeFaces:190 - Encoding Faces... (This may take a while)
+2023-03-08 10:32:14,791 - app - INFO - encodeFaces:190 - Encoding Faces... (This may take a while)
+2023-03-08 10:36:00,063 - app - INFO - encodeFaces:190 - Encoding Faces... (This may take a while)
+2023-03-08 10:36:41,874 - app - INFO - encodeFaces:190 - Encoding Faces... (This may take a while)
+2023-03-08 10:36:44,351 - app - INFO - encodeFaces:200 - Encoding Done!
+2023-03-08 10:39:44,809 - app - INFO - encodeFaces:190 - Encoding Faces... (This may take a while)
+2023-03-08 10:40:17,427 - app - INFO - encodeFaces:200 - Encoding Done!
+2023-03-08 10:40:32,323 - app - INFO - encodeFaces:190 - Encoding Faces... (This may take a while)
+2023-03-08 10:40:51,728 - app - INFO - encodeFaces:190 - Encoding Faces... (This may take a while)
+2023-03-08 10:40:56,669 - app - INFO - encodeFaces:200 - Encoding Done!
+2023-03-08 10:41:14,844 - app - INFO - encodeFaces:200 - Encoding Done!
+2023-03-08 10:44:03,168 - app - INFO - encodeFaces:184 - Encoding Faces... (This may take a while)
+2023-03-08 10:44:03,205 - app - INFO - encodeFaces:184 - Encoding Faces... (This may take a while)
+2023-03-08 10:44:26,752 - app - INFO - encodeFaces:194 - Encoding Done!
+2023-03-08 10:44:26,766 - app - INFO - encodeFaces:194 - Encoding Done!
+2023-03-08 10:47:56,617 - app - INFO - encodeFaces:184 - Encoding Faces... (This may take a while)
+2023-03-08 10:48:19,790 - app - INFO - encodeFaces:194 - Encoding Done!
+2023-03-08 11:00:55,804 - app - INFO - encodeFaces:189 - Encoding Faces... (This may take a while)
+2023-03-08 11:00:55,886 - app - INFO - encodeFaces:189 - Encoding Faces... (This may take a while)
+2023-03-08 11:01:19,830 - app - INFO - encodeFaces:199 - Encoding Done!
+2023-03-08 11:01:20,260 - app - INFO - encodeFaces:199 - Encoding Done!
+2023-03-08 11:01:29,960 - app - INFO - process:62 - [['Unknown', '0%']]
+2023-03-08 11:01:44,308 - app - INFO - process:62 - [['Unknown', '0%'], ['Unknown', '0%'], ['Unknown', '0%'], ['Rizky', '86.41%']]
+2023-03-08 11:10:12,960 - app - INFO - encodeFaces:187 - Encoding Faces... (This may take a while)
+2023-03-08 11:10:37,711 - app - INFO - encodeFaces:197 - Encoding Done!
