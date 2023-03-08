@@ -429,3 +429,50 @@ asyncio.exceptions.CancelledError
 2023-03-08 11:10:37,726 - uvicorn.error - INFO - serve:75 - Started server process [11756]
 2023-03-08 11:10:37,727 - uvicorn.error - INFO - startup:47 - Waiting for application startup.
 2023-03-08 11:10:37,730 - uvicorn.error - INFO - startup:61 - Application startup complete.
+2023-03-08 13:56:12,623 - uvicorn.error - INFO - serve:75 - Started server process [1752]
+2023-03-08 13:56:12,625 - uvicorn.error - INFO - startup:47 - Waiting for application startup.
+2023-03-08 13:56:12,627 - uvicorn.error - INFO - startup:61 - Application startup complete.
+2023-03-08 13:56:31,050 - uvicorn.access - INFO - send:480 - 127.0.0.1:5663 - "POST /api/v1 HTTP/1.1" 307
+2023-03-08 13:56:31,059 - uvicorn.access - INFO - send:480 - 127.0.0.1:5663 - "POST /api/v1/ HTTP/1.1" 422
+2023-03-08 13:57:10,689 - uvicorn.access - INFO - send:480 - 127.0.0.1:5679 - "POST /api/v1 HTTP/1.1" 307
+2023-03-08 13:57:13,630 - uvicorn.access - INFO - send:480 - 127.0.0.1:5679 - "POST /api/v1/ HTTP/1.1" 200
+2023-03-08 13:58:56,820 - uvicorn.error - INFO - shutdown:255 - Shutting down
+2023-03-08 14:09:38,330 - uvicorn.error - INFO - serve:75 - Started server process [8812]
+2023-03-08 14:09:38,337 - uvicorn.error - INFO - startup:47 - Waiting for application startup.
+2023-03-08 14:09:38,340 - uvicorn.error - INFO - startup:61 - Application startup complete.
+2023-03-08 14:13:16,856 - uvicorn.access - INFO - send:480 - 127.0.0.1:5945 - "POST /api/v1 HTTP/1.1" 307
+2023-03-08 14:13:20,494 - uvicorn.access - INFO - send:480 - 127.0.0.1:5945 - "POST /api/v1/ HTTP/1.1" 200
+2023-03-08 14:36:43,964 - uvicorn.error - INFO - serve:75 - Started server process [8928]
+2023-03-08 14:36:43,966 - uvicorn.error - INFO - startup:47 - Waiting for application startup.
+2023-03-08 14:36:43,967 - uvicorn.error - INFO - startup:61 - Application startup complete.
+2023-03-08 14:37:53,614 - uvicorn.access - INFO - send:480 - 127.0.0.1:26511 - "POST /api/v1 HTTP/1.1" 307
+2023-03-08 14:37:56,625 - uvicorn.access - INFO - send:480 - 127.0.0.1:26511 - "POST /api/v1/ HTTP/1.1" 200
+2023-03-08 14:41:18,758 - uvicorn.access - INFO - send:480 - 127.0.0.1:26552 - "POST /api/v1 HTTP/1.1" 307
+2023-03-08 14:41:20,817 - uvicorn.access - INFO - send:480 - 127.0.0.1:26552 - "POST /api/v1/ HTTP/1.1" 200
+2023-03-08 14:43:00,670 - uvicorn.access - INFO - send:480 - 127.0.0.1:26575 - "POST /api/v1 HTTP/1.1" 307
+2023-03-08 14:43:00,685 - uvicorn.access - INFO - send:480 - 127.0.0.1:26577 - "POST /api/v1/ HTTP/1.1" 400
+2023-03-08 14:43:04,040 - uvicorn.access - INFO - send:480 - 127.0.0.1:26579 - "POST /api/v1 HTTP/1.1" 307
+2023-03-08 14:43:04,053 - uvicorn.access - INFO - send:480 - 127.0.0.1:26581 - "POST /api/v1/ HTTP/1.1" 400
+2023-03-08 14:43:26,476 - uvicorn.access - INFO - send:480 - 127.0.0.1:26586 - "POST /api/v1 HTTP/1.1" 307
+2023-03-08 14:43:26,491 - uvicorn.access - INFO - send:480 - 127.0.0.1:26588 - "POST /api/v1/ HTTP/1.1" 400
+2023-03-08 14:44:08,866 - uvicorn.access - INFO - send:480 - 127.0.0.1:26601 - "POST /api/v1 HTTP/1.1" 307
+2023-03-08 14:44:11,568 - uvicorn.access - INFO - send:480 - 127.0.0.1:26601 - "POST /api/v1/ HTTP/1.1" 200
+2023-03-08 14:45:33,466 - uvicorn.access - INFO - send:480 - 127.0.0.1:26647 - "POST /api/v1 HTTP/1.1" 307
+2023-03-08 14:45:35,614 - uvicorn.access - INFO - send:480 - 127.0.0.1:26647 - "POST /api/v1/ HTTP/1.1" 200
+2023-03-08 14:47:50,179 - uvicorn.access - INFO - send:480 - 127.0.0.1:26661 - "POST /api/v1 HTTP/1.1" 307
+2023-03-08 14:47:51,477 - uvicorn.access - INFO - send:480 - 127.0.0.1:26661 - "POST /api/v1/ HTTP/1.1" 200
+2023-03-08 14:48:02,151 - uvicorn.access - INFO - send:480 - 127.0.0.1:26665 - "POST /api/v1 HTTP/1.1" 307
+2023-03-08 14:48:03,109 - uvicorn.access - INFO - send:480 - 127.0.0.1:26665 - "POST /api/v1/ HTTP/1.1" 200
+2023-03-08 15:36:36,272 - uvicorn.error - INFO - shutdown:255 - Shutting down
+2023-03-08 15:36:36,384 - uvicorn.error - INFO - serve:85 - Finished server process [8928]
+2023-03-08 15:36:36,525 - uvicorn.error - ERROR - send:134 - Traceback (most recent call last):
+  File "C:\Users\Ale\AppData\Local\Programs\Python\Python310\lib\site-packages\starlette\routing.py", line 674, in lifespan
+    await receive()
+  File "C:\Users\Ale\AppData\Local\Programs\Python\Python310\lib\site-packages\uvicorn\middleware\message_logger.py", line 62, in inner_receive
+    message = await receive()
+  File "C:\Users\Ale\AppData\Local\Programs\Python\Python310\lib\site-packages\uvicorn\lifespan\on.py", line 137, in receive
+    return await self.receive_queue.get()
+  File "C:\Users\Ale\AppData\Local\Programs\Python\Python310\lib\asyncio\queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+

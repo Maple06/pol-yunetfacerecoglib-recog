@@ -114,3 +114,54 @@
 2023-03-08 11:01:44,308 - app - INFO - process:62 - [['Unknown', '0%'], ['Unknown', '0%'], ['Unknown', '0%'], ['Rizky', '86.41%']]
 2023-03-08 11:10:12,960 - app - INFO - encodeFaces:187 - Encoding Faces... (This may take a while)
 2023-03-08 11:10:37,711 - app - INFO - encodeFaces:197 - Encoding Done!
+2023-03-08 13:48:06,598 - app - INFO - updateDataset:202 - Updating datasets... (This may took a while)
+2023-03-08 13:48:57,287 - app - INFO - updateDataset:202 - Updating datasets... (This may took a while)
+2023-03-08 13:53:05,595 - app - INFO - updateDataset:227 - Datasets updated!
+2023-03-08 13:53:05,597 - app - INFO - encodeFaces:189 - Encoding Faces... (This may take a while)
+2023-03-08 13:56:12,589 - app - INFO - encodeFaces:199 - Encoding Done!
+2023-03-08 13:57:13,596 - app - INFO - process:60 - [['64002924e3ef43e72bf1b824', '99.01%']]
+2023-03-08 13:59:29,013 - app - INFO - updateDataset:202 - Updating datasets... (This may took a while)
+2023-03-08 14:00:05,967 - app - INFO - updateDataset:202 - Updating datasets... (This may took a while)
+2023-03-08 14:02:10,949 - app - INFO - updateDataset:202 - Updating datasets... (This may took a while)
+2023-03-08 14:02:34,081 - app - INFO - updateDataset:202 - Updating datasets... (This may took a while)
+2023-03-08 14:03:05,196 - app - INFO - updateDataset:202 - Updating datasets... (This may took a while)
+2023-03-08 14:06:29,412 - app - INFO - updateDataset:221 - Datasets updated!
+2023-03-08 14:06:29,417 - app - INFO - encodeFaces:189 - Encoding Faces... (This may take a while)
+2023-03-08 14:09:38,313 - app - INFO - encodeFaces:199 - Encoding Done!
+2023-03-08 14:13:20,445 - app - INFO - process:60 - [['64002924e3ef43e72bf1b824.jpg (99.01%)', '99.01%']]
+2023-03-08 14:15:28,397 - app - INFO - updateDataset:202 - Updating datasets... (This may took a while)
+2023-03-08 14:16:45,483 - app - INFO - updateDataset:198 - Updating datasets... (This may took a while)
+2023-03-08 14:29:29,174 - app - INFO - updateDataset:205 - Updating datasets... (This may took a while)
+2023-03-08 14:33:28,309 - app - INFO - updateDataset:224 - Datasets updated!
+2023-03-08 14:33:28,311 - app - INFO - encodeFaces:192 - Encoding Faces... (This may take a while)
+2023-03-08 14:36:43,945 - app - INFO - encodeFaces:202 - Encoding Done!
+2023-03-08 14:37:53,946 - app - INFO - process:42 - Saving image to D:\Programming\Workbooks\01. Kazee\pol-recog/data/output/20230308/3/data/input.jpg
+2023-03-08 14:37:54,047 - app - INFO - getFaceCoordinates:85 - Grabbing faces detected from input image
+2023-03-08 14:37:54,293 - app - INFO - getFaceCoordinates:128 - Face grab success. Got total faces of 1
+2023-03-08 14:37:54,306 - app - INFO - recog:139 - Recognizing faces into user IDs
+2023-03-08 14:37:56,623 - app - INFO - process:77 - API return success. Request fulfilled.
+2023-03-08 14:41:18,776 - app - INFO - process:42 - Saving image to D:\Programming\Workbooks\01. Kazee\pol-recog/data/output/20230308/4/data/input.jpg
+2023-03-08 14:41:18,782 - app - INFO - getFaceCoordinates:85 - Grabbing faces detected from input image
+2023-03-08 14:41:18,879 - app - INFO - getFaceCoordinates:128 - Face grab success. Got total faces of 1
+2023-03-08 14:41:18,882 - app - INFO - recog:139 - Recognizing faces into user IDs
+2023-03-08 14:41:20,815 - app - INFO - process:77 - API return success. Request fulfilled.
+2023-03-08 14:44:08,886 - app - INFO - process:42 - Saving image to D:\Programming\Workbooks\01. Kazee\pol-recog/data/output/20230308/5/data/input.jpg
+2023-03-08 14:44:08,971 - app - INFO - getFaceCoordinates:85 - Grabbing faces detected from input image
+2023-03-08 14:44:09,390 - app - INFO - getFaceCoordinates:128 - Face grab success. Got total faces of 1
+2023-03-08 14:44:09,410 - app - INFO - recog:139 - Recognizing faces into user IDs
+2023-03-08 14:44:11,565 - app - INFO - process:77 - API return success. Request fulfilled.
+2023-03-08 14:45:33,487 - app - INFO - process:42 - Saving image to D:\Programming\Workbooks\01. Kazee\pol-recog/data/output/20230308/6/data/input.jpg
+2023-03-08 14:45:33,562 - app - INFO - getFaceCoordinates:85 - Grabbing faces detected from input image
+2023-03-08 14:45:33,837 - app - INFO - getFaceCoordinates:128 - Face grab success. Got total faces of 1
+2023-03-08 14:45:33,853 - app - INFO - recog:139 - Recognizing faces into user IDs
+2023-03-08 14:45:35,612 - app - INFO - process:77 - API return success. Request fulfilled.
+2023-03-08 14:47:50,201 - app - INFO - process:42 - Saving image to D:\Programming\Workbooks\01. Kazee\pol-recog/data/output/20230308/7/data/input.jpg
+2023-03-08 14:47:50,304 - app - INFO - getFaceCoordinates:85 - Grabbing faces detected from input image
+2023-03-08 14:47:50,626 - app - INFO - getFaceCoordinates:128 - Face grab success. Got total faces of 1
+2023-03-08 14:47:50,685 - app - INFO - recog:139 - Recognizing faces into user IDs
+2023-03-08 14:47:51,472 - app - INFO - process:77 - API return success. Request fulfilled.
+2023-03-08 14:48:02,174 - app - INFO - process:42 - Saving image to D:\Programming\Workbooks\01. Kazee\pol-recog/data/output/20230308/8/data/input.jpg
+2023-03-08 14:48:02,235 - app - INFO - getFaceCoordinates:85 - Grabbing faces detected from input image
+2023-03-08 14:48:02,458 - app - INFO - getFaceCoordinates:128 - Face grab success. Got total faces of 1
+2023-03-08 14:48:02,466 - app - INFO - recog:139 - Recognizing faces into user IDs
+2023-03-08 14:48:03,107 - app - INFO - process:77 - API return success. Request fulfilled.

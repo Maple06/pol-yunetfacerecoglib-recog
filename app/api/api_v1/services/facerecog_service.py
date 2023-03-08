@@ -1,5 +1,5 @@
 from ....core.logging import logger
-from ..load_models import cv2, face_recognition, os, shutil, datetime, numpy as np, math
+from ..load_models import cv2, face_recognition, os, shutil, datetime, numpy as np, math, requests, tqdm
 
 CWD = os.getcwd()
 
@@ -39,14 +39,16 @@ class RecogService:
                 return {"path_frame": None, "path_result": None, "result": None, "error_message": "No face detected", "status": 0}
             else:
                 shutil.copyfileobj(image.file, f)
+                logger.info(f"Saving image to {filename}")
 
         frame = cv2.imread(filename)
 
         filenameDatas = {"timeNow": timeNow, "id": filename.split(f"{timeNow}/")[1].split("/data")[0]}
 
-        boxes, confidences, filenames = self.getFaceCoordinates(frame, filenameDatas)
+        filenames, confidences = self.getFaceCoordinates(frame, filenameDatas)
 
-        if len(boxes) == 0:
+        if len(filenames) == 0:
+            logger.info("API return success with exception: No face detected. Files removed")
             os.remove(filename)
             return {"path_frame": None, "path_result": None, "result": None, "error_message": "No face detected", "status": 0}
         
@@ -56,8 +58,6 @@ class RecogService:
                 resultRaw.append(self.recog(f"{CWD}/data/output/{currentFilename}"))
             except:
                 resultRaw.append(["Unknown", "0%"])
-
-        logger.info(resultRaw)
 
         frameNames = (i.split("/")[-1].split(".")[0] for i in filenames)
         
@@ -74,6 +74,7 @@ class RecogService:
         with open(JSONFilename, "w") as f:
             f.write(str(result))
 
+        logger.info("API return success. Request fulfilled.")
         return {"path_frame": filenames, "path_result": JSONFilename.split("output/")[1], "result": result, "status": 1}
 
     def getTimeNow(self):
@@ -81,6 +82,8 @@ class RecogService:
         return datetime.datetime.now().strftime("%Y%m%d")
     
     def getFaceCoordinates(self, frame, filenameDatas):
+        logger.info("Grabbing faces detected from input image")
+
         timeNow = filenameDatas["timeNow"]
         id = filenameDatas["id"]
         detector = cv2.FaceDetectorYN.create(f"{CWD}/ml-models/face_detection_yunet/face_detection_yunet_2022mar.onnx", "", (320, 320))
@@ -122,7 +125,8 @@ class RecogService:
 
             confidences.append(confidence)
 
-        return (boxes, confidences, filenames)
+        logger.info(f"Face grab success. Got total faces of {len(filenames)}")
+        return (filenames, confidences)
     
     def resize(self, filename: str, resolution: int):
         frame = cv2.imread(filename)
@@ -132,6 +136,7 @@ class RecogService:
             return frame
 
     def recog(self, filename: str):
+        logger.info("Recognizing faces into user IDs")
         # Read image as cv2
         frame = cv2.imread(filename)
 
@@ -142,19 +147,16 @@ class RecogService:
 
         tmpFaceNames = []
         for i in faceNames:
-            IDdetected = i.split("-")[0]
+            IDdetected = i.split(".jpg")[0]
             if IDdetected == "Unknown (0%)":
                 IDdetected = "Unknown"
                 confidence = 0
             else:
                 confidence = i.split("jpg (")[1].split("%")[0]
-            # NOTE: CHANGE THIS LATER
-            # Adds a minumum confidence of 10% for the API to return
-            if float(confidence) > 10 or IDdetected == "Unknown":
+            # Threshold confidence of 85% for the API to return
+            if float(confidence) > 85 or IDdetected == "Unknown":
                 tmpFaceNames.append([IDdetected, f"{confidence}%"])
         faceNames = tmpFaceNames
-
-        print(faceNames, flush=True)
 
         return [faceNames[0][0], faceNames[0][1]]
 
@@ -183,9 +185,12 @@ class RecogService:
         return face_names
     
     def encodeFaces(self):
+        # Update dataset before encoding
+        self.updateDataset()
+
         # Encoding faces (Re-training for face detection algorithm)
         logger.info("Encoding Faces... (This may take a while)")
-        for image in os.listdir(f'{CWD}/data/dataset'):
+        for image in tqdm(os.listdir(f'{CWD}/data/dataset')):
             face_image = face_recognition.load_image_file(f'{CWD}/data/dataset/{image}')
             try:
                 face_encoding = face_recognition.face_encodings(face_image)[0]
@@ -195,6 +200,28 @@ class RecogService:
                 pass
         
         logger.info("Encoding Done!")
+
+    def updateDataset(self):
+        logger.info("Updating datasets... (This may took a while)")
+
+        APITOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJlemFhckBrYXplZS5pZCIsImlhdCI6MTY3NTgyMTY2Mn0.eprZiRQUjiWjbfZYlbziT6sXG-34f2CnQCSy3yhAh6I"
+        r = requests.get("http://103.150.87.245:3001/api/profile/list-photo", headers={'Authorization': 'Bearer ' + APITOKEN})
+
+        datas = r.json()["data"]
+
+        for data in tqdm(datas):
+            userID = data["user_id"]
+            url = data["photo"]
+
+            r = requests.get(url)
+
+            filename = f'{CWD}/data/dataset/{userID}.jpg'
+            
+            # Save grabbed image to {CWD}/data/faces/
+            with open(filename, 'wb') as f:
+                f.write(r.content)
+
+        logger.info("Datasets updated!")
 
     def convertBGRtoRGB(self, frame):
         return frame[:, :, ::-1]
