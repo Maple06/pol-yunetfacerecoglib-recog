@@ -1,8 +1,7 @@
 # API core module for all endpoints
 from fastapi import APIRouter
 from .endpoints.facerecog_endpoint import Recog
-from .schemas.facerecog_schema import ImageAbsen
-from fastapi import UploadFile, File
+from .schemas.facerecog_schema import ImagePolda
 
 router = APIRouter(
     prefix='/api/v1',
@@ -12,7 +11,7 @@ router = APIRouter(
 )
 
 @router.post('/')
-async def faceRecog(file: UploadFile = File(...)):
+async def faceRecog(file: ImagePolda):
     recog = Recog()
     result = recog.get_prediction(file)
 

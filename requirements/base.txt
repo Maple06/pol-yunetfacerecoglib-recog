@@ -8,3 +8,4 @@ opencv-contrib-python
 python-multipart
 uvicorn
 tqdm
+pytz

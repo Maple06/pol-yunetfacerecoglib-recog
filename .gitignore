@@ -1,1 +1,3 @@
-data/faces/*
+data/dataset/*
+data/output/*
+!.gitkeep

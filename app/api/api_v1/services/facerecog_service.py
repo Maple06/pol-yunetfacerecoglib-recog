@@ -1,5 +1,5 @@
 from ....core.logging import logger
-from ..load_models import cv2, face_recognition, os, shutil, datetime, numpy as np, math, requests, tqdm
+from ..load_models import cv2, face_recognition, os, shutil, datetime, numpy as np, math, requests, tqdm, sys
 
 CWD = os.getcwd()
 
@@ -36,7 +36,7 @@ class RecogService:
         with open(filename, "wb") as f:
             if image.filename.split(".")[-1].lower() not in ["jpg", "png", "jpeg", "heif"]:
                 logger.warning("Filename not supported")
-                return {"path_frame": None, "path_result": None, "result": None, "error_message": "No face detected", "status": 0}
+                return {"path_frame": None, "path_result": None, "result": None, "error_message": "Filename not supported", "status": 0}
             else:
                 shutil.copyfileobj(image.file, f)
                 logger.info(f"Saving image to {filename}")
@@ -147,7 +147,7 @@ class RecogService:
 
         tmpFaceNames = []
         for i in faceNames:
-            IDdetected = i.split(".jpg")[0]
+            IDdetected = i.split("-")[0]
             if IDdetected == "Unknown (0%)":
                 IDdetected = "Unknown"
                 confidence = 0
@@ -190,7 +190,7 @@ class RecogService:
 
         # Encoding faces (Re-training for face detection algorithm)
         logger.info("Encoding Faces... (This may take a while)")
-        for image in tqdm(os.listdir(f'{CWD}/data/dataset')):
+        for image in tqdm(os.listdir(f'{CWD}/data/dataset'), file=sys.stdout):
             face_image = face_recognition.load_image_file(f'{CWD}/data/dataset/{image}')
             try:
                 face_encoding = face_recognition.face_encodings(face_image)[0]
@@ -209,7 +209,7 @@ class RecogService:
 
         datas = r.json()["data"]
 
-        for data in tqdm(datas):
+        for data in tqdm(datas, file=sys.stdout):
             userID = data["user_id"]
             url = data["photo"]
 
