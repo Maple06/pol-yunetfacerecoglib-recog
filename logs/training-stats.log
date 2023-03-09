@@ -171,3 +171,14 @@
 2023-03-09 08:42:57,567 - app - INFO - updateDataset:205 - Updating datasets... (This may took a while)
 2023-03-09 08:45:42,618 - app - INFO - updateDataset:224 - Datasets updated!
 2023-03-09 08:45:42,621 - app - INFO - encodeFaces:192 - Encoding Faces... (This may take a while)
+2023-03-09 13:36:49,178 - app - INFO - updateDataset:205 - Updating datasets... (This may took a while)
+2023-03-09 13:40:12,219 - app - INFO - updateDataset:224 - Datasets updated!
+2023-03-09 13:40:12,220 - app - INFO - encodeFaces:192 - Encoding Faces... (This may take a while)
+2023-03-09 13:46:29,383 - app - INFO - updateDataset:205 - Updating datasets... (This may took a while)
+2023-03-09 13:49:44,784 - app - INFO - updateDataset:224 - Datasets updated!
+2023-03-09 13:49:44,784 - app - INFO - encodeFaces:192 - Encoding Faces... (This may take a while)
+2023-03-09 13:50:15,325 - app - INFO - updateDataset:205 - Updating datasets... (This may took a while)
+2023-03-09 13:51:58,700 - app - INFO - updateDataset:205 - Updating datasets... (This may took a while)
+2023-03-09 13:52:43,679 - app - INFO - updateDataset:205 - Updating datasets... (This may took a while)
+2023-03-09 13:56:06,375 - app - INFO - updateDataset:226 - Datasets updated!
+2023-03-09 13:56:06,375 - app - INFO - encodeFaces:192 - Encoding Faces... (This may take a while)

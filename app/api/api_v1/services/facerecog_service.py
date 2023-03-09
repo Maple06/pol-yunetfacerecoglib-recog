@@ -1,5 +1,5 @@
 from ....core.logging import logger
-from ..load_models import cv2, face_recognition, os, shutil, datetime, numpy as np, math, requests, tqdm, sys
+from ..load_models import cv2, face_recognition, os, shutil, datetime, numpy as np, math, requests, tqdm, sys, Image, ImageOps, ImageEnhance
 
 CWD = os.getcwd()
 
@@ -220,6 +220,8 @@ class RecogService:
             # Save grabbed image to {CWD}/data/faces/
             with open(filename, 'wb') as f:
                 f.write(r.content)
+            
+            self.imgAugmentation(filename)
 
         logger.info("Datasets updated!")
 
@@ -235,6 +237,53 @@ class RecogService:
         else:
             value = (linear_val + ((1.0 - linear_val) * math.pow((linear_val - 0.5) * 2, 0.2))) * 100
             return str(round(value, 2)) + '%'
+        
+    def imgAugmentation(self, img):
+        input_img = Image.open(img)
+        input_img = input_img.convert('RGB')
+        # Flip Image
+        img_flip = ImageOps.flip(input_img)
+        img_flip.save(f"{img.split('.jpg')[0]}-flipped.jpg")
+        # Mirror Image 
+        img_mirror = ImageOps.mirror(input_img)
+        img_mirror.save(f"{img.split('.jpg')[0]}-mirrored.jpg")
+        # Rotate Image
+        img_rot1 = input_img.rotate(30)
+        img_rot1.save(f"{img.split('.jpg')[0]}-rotated1.jpg")
+        img_rot2 = input_img.rotate(330)
+        img_rot2.save(f"{img.split('.jpg')[0]}-rotated2.jpg")
+        # Zoom to face
+        try :
+            cv2_input = cv2.imread(img)
+            detector = cv2.FaceDetectorYN.create(f"{CWD}/ml-models/face_detection_yunet/face_detection_yunet_2022mar.onnx", "", (320, 320))
+            height, width, channels = cv2_input.shape
+            detector.setInputSize((width, height))
+            channel, faces = detector.detect(cv2_input)
+            faces = faces if faces is not None else []
+            boxes = []
+            for face in faces:
+                box = list(map(int, face[:4]))
+                boxes.append(box)
+                x = box[0]
+                y = box[1]
+                w = box[2]
+                h = box[3]
+                faceCropped = cv2_input[y:y + h, x:x + w]
+            if len(boxes) == 1:
+                cv2.imwrite(f"{img.split('.jpg')[0]}-zoomed.jpg", faceCropped)
+        except :
+            pass
+        # Adjust Brightness
+        enhancer = ImageEnhance.Brightness(input_img)
+        im_darker = enhancer.enhance(0.5)
+        im_darker.save(f"{img.split('.jpg')[0]}-darker1.jpg")
+        im_darker2 = enhancer.enhance(0.7)
+        im_darker2.save(f"{img.split('.jpg')[0]}-darker2.jpg")
+        enhancer = ImageEnhance.Brightness(input_img)
+        im_darker = enhancer.enhance(1.2)
+        im_darker.save(f"{img.split('.jpg')[0]}-brighter1.jpg")
+        im_darker2 = enhancer.enhance(1.5)
+        im_darker2.save(f"{img.split('.jpg')[0]}-brighter2.jpg")
 
 recogService = RecogService()
 recogService.encodeFaces()
