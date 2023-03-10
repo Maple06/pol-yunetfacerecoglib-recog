@@ -476,3 +476,6 @@ asyncio.exceptions.CancelledError
     await getter
 asyncio.exceptions.CancelledError
 
+2023-03-09 16:01:12,939 - uvicorn.error - INFO - serve:75 - Started server process [21984]
+2023-03-09 16:01:12,939 - uvicorn.error - INFO - startup:47 - Waiting for application startup.
+2023-03-09 16:01:12,941 - uvicorn.error - INFO - startup:61 - Application startup complete.

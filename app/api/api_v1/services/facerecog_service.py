@@ -272,7 +272,7 @@ class RecogService:
             if len(boxes) == 1:
                 cv2.imwrite(f"{img.split('.jpg')[0]}-zoomed.jpg", faceCropped)
         except :
-            pass
+           pass
         # Adjust Brightness
         enhancer = ImageEnhance.Brightness(input_img)
         im_darker = enhancer.enhance(0.5)
