@@ -1,7 +1,6 @@
 # API core module for all endpoints
 from fastapi import APIRouter
 from .endpoints.facerecog_endpoint import Recog
-from .schemas.facerecog_schema import ImagePolda
 from fastapi import UploadFile, File
 
 router = APIRouter(
