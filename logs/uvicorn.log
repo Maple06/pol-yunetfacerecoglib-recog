@@ -479,3 +479,36 @@ asyncio.exceptions.CancelledError
 2023-03-09 16:01:12,939 - uvicorn.error - INFO - serve:75 - Started server process [21984]
 2023-03-09 16:01:12,939 - uvicorn.error - INFO - startup:47 - Waiting for application startup.
 2023-03-09 16:01:12,941 - uvicorn.error - INFO - startup:61 - Application startup complete.
+2023-03-10 11:29:58,416 - uvicorn.error - INFO - serve:75 - Started server process [2684]
+2023-03-10 11:29:58,418 - uvicorn.error - INFO - startup:47 - Waiting for application startup.
+2023-03-10 11:29:58,425 - uvicorn.error - INFO - startup:61 - Application startup complete.
+2023-03-10 11:34:42,450 - uvicorn.access - INFO - send:480 - 127.0.0.1:11244 - "POST /api/v1 HTTP/1.1" 307
+2023-03-10 11:34:43,874 - uvicorn.access - INFO - send:480 - 127.0.0.1:11244 - "POST /api/v1/ HTTP/1.1" 200
+2023-03-10 11:34:56,344 - uvicorn.access - INFO - send:480 - 127.0.0.1:11248 - "POST /api/v1 HTTP/1.1" 307
+2023-03-10 11:34:56,370 - uvicorn.access - INFO - send:480 - 127.0.0.1:11250 - "POST /api/v1/ HTTP/1.1" 400
+2023-03-10 11:35:02,485 - uvicorn.access - INFO - send:480 - 127.0.0.1:11253 - "POST /api/v1 HTTP/1.1" 307
+2023-03-10 11:35:05,343 - uvicorn.access - INFO - send:480 - 127.0.0.1:11253 - "POST /api/v1/ HTTP/1.1" 200
+2023-03-10 11:36:08,363 - uvicorn.access - INFO - send:480 - 127.0.0.1:11265 - "POST /api/v1 HTTP/1.1" 307
+2023-03-10 11:36:11,123 - uvicorn.access - INFO - send:480 - 127.0.0.1:11265 - "POST /api/v1/ HTTP/1.1" 200
+2023-03-10 11:36:19,607 - uvicorn.access - INFO - send:480 - 127.0.0.1:11270 - "POST /api/v1 HTTP/1.1" 307
+2023-03-10 11:36:22,658 - uvicorn.access - INFO - send:480 - 127.0.0.1:11270 - "POST /api/v1/ HTTP/1.1" 200
+2023-03-10 12:36:37,729 - uvicorn.error - INFO - serve:75 - Started server process [13216]
+2023-03-10 12:36:37,731 - uvicorn.error - INFO - startup:47 - Waiting for application startup.
+2023-03-10 12:36:37,733 - uvicorn.error - INFO - startup:61 - Application startup complete.
+2023-03-10 12:36:37,736 - uvicorn.error - INFO - _log_started_message:209 - Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2023-03-10 12:51:54,306 - uvicorn.error - INFO - shutdown:255 - Shutting down
+2023-03-10 12:51:54,423 - uvicorn.error - INFO - shutdown:66 - Waiting for application shutdown.
+2023-03-10 12:51:54,424 - uvicorn.error - INFO - shutdown:77 - Application shutdown complete.
+2023-03-10 12:51:54,426 - uvicorn.error - INFO - serve:85 - Finished server process [13216]
+2023-03-10 13:21:28,430 - uvicorn.error - INFO - serve:75 - Started server process [8468]
+2023-03-10 13:21:28,434 - uvicorn.error - INFO - startup:47 - Waiting for application startup.
+2023-03-10 13:21:28,437 - uvicorn.error - INFO - startup:61 - Application startup complete.
+2023-03-10 13:21:28,440 - uvicorn.error - INFO - _log_started_message:209 - Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2023-03-10 13:32:04,061 - uvicorn.error - INFO - shutdown:255 - Shutting down
+2023-03-10 13:32:04,169 - uvicorn.error - INFO - shutdown:66 - Waiting for application shutdown.
+2023-03-10 13:32:04,171 - uvicorn.error - INFO - shutdown:77 - Application shutdown complete.
+2023-03-10 13:32:04,173 - uvicorn.error - INFO - serve:85 - Finished server process [8468]
+2023-03-10 14:01:49,467 - uvicorn.error - INFO - serve:75 - Started server process [13776]
+2023-03-10 14:01:49,470 - uvicorn.error - INFO - startup:47 - Waiting for application startup.
+2023-03-10 14:01:49,473 - uvicorn.error - INFO - startup:61 - Application startup complete.
+2023-03-10 14:01:49,475 - uvicorn.error - INFO - _log_started_message:209 - Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)

@@ -1,16 +1,13 @@
 from ....core.logging import logger
 from ..load_models import cv2, face_recognition, os, shutil, datetime, numpy as np, math, requests, tqdm, sys, Image, ImageOps, ImageEnhance
+from ..load_models import Models
 
 CWD = os.getcwd()
 
 # Module specific business logic (will be use for endpoints)
 class RecogService:
     def __init__(self):
-        self.face_locations = []
-        self.face_encodings = []
-        self.face_names = []
-        self.known_face_encodings = []
-        self.known_face_names = []
+        pass
 
     def process(self, image):
         # Get time now for filename
@@ -45,7 +42,7 @@ class RecogService:
 
         filenameDatas = {"timeNow": timeNow, "id": filename.split(f"{timeNow}/")[1].split("/data")[0]}
 
-        filenames, confidences = self.getFaceCoordinates(frame, filenameDatas)
+        filenames, confidences = Models.getFaceCoordinates(frame, filenameDatas)
 
         if len(filenames) == 0:
             logger.info("API return success with exception: No face detected. Files removed")
@@ -80,53 +77,6 @@ class RecogService:
     def getTimeNow(self):
         # before: %d-%b-%y.%H-%M-%S
         return datetime.datetime.now().strftime("%Y%m%d")
-    
-    def getFaceCoordinates(self, frame, filenameDatas):
-        logger.info("Grabbing faces detected from input image")
-
-        timeNow = filenameDatas["timeNow"]
-        id = filenameDatas["id"]
-        detector = cv2.FaceDetectorYN.create(f"{CWD}/ml-models/face_detection_yunet/face_detection_yunet_2022mar.onnx", "", (320, 320))
-
-        height, width, channels = frame.shape
-
-        # Set input size
-        detector.setInputSize((width, height))
-        # Getting detections
-        channel, faces = detector.detect(frame)
-        faces = faces if faces is not None else []
-
-        boxes = []
-        confidences = []
-        filenames = []
-        count = 1
-        
-        for face in faces:
-            box = list(map(int, face[:4]))
-            boxes.append(box)
-            x = box[0]
-            y = box[1]
-            w = box[2]
-            h = box[3]
-            faceCropped = frame[y:y + h, x:x + w]
-
-            ### SEMENTARA MASIH TANPA FILTERING MINIMUM PIXEL SHAPE 50
-            # if w >= 50 and h >= 50 and x >= 0 and y >= 0:
-            filename = f"{CWD}/data/output/{timeNow}/{id}/frame/frame{str(count).zfill(3)}.jpg"
-            if not os.path.exists(f"{CWD}/data/output/{timeNow}/{id}/frame/"):
-                os.mkdir(f"{CWD}/data/output/{timeNow}/{id}/frame/")
-            filenames.append(filename.split("output/")[1])
-            cv2.imwrite(filename, faceCropped)
-            cv2.imwrite(filename, self.resize(filename, 360))
-            count += 1
-                
-            confidence = face[-1]
-            confidence = "{:.2f}%".format(confidence*100)
-
-            confidences.append(confidence)
-
-        logger.info(f"Face grab success. Got total faces of {len(filenames)}")
-        return (filenames, confidences)
     
     def resize(self, filename: str, resolution: int):
         frame = cv2.imread(filename)
@@ -168,62 +118,22 @@ class RecogService:
         face_names = []
         for face_encoding in face_encodings:
             # See if the face is a match for the known face(s)
-            matches = face_recognition.compare_faces(self.known_face_encodings, face_encoding)
+            matches = face_recognition.compare_faces(Models.known_face_encodings, face_encoding)
             name = "Unknown"
             confidence = '0%'
 
             # Calculate the shortest distance to face
-            face_distances = face_recognition.face_distance(self.known_face_encodings, face_encoding)
+            print(f"service: {len(Models.known_face_encodings)}", flush=True)
+            face_distances = face_recognition.face_distance(Models.known_face_encodings, face_encoding)
 
             best_match_index = np.argmin(face_distances)
             if matches[best_match_index]:
-                name = self.known_face_names[best_match_index]
+                name = Models.known_face_names[best_match_index]
                 confidence = self.faceConfidence(face_distances[best_match_index])
             
             face_names.append(f'{name} ({confidence})')
 
         return face_names
-    
-    def encodeFaces(self):
-        # Update dataset before encoding
-        self.updateDataset()
-
-        # Encoding faces (Re-training for face detection algorithm)
-        logger.info("Encoding Faces... (This may take a while)")
-        for image in tqdm(os.listdir(f'{CWD}/data/dataset'), file=sys.stdout):
-            face_image = face_recognition.load_image_file(f'{CWD}/data/dataset/{image}')
-            try:
-                face_encoding = face_recognition.face_encodings(face_image)[0]
-                self.known_face_encodings.append(face_encoding)
-                self.known_face_names.append(image)
-            except IndexError:
-                pass
-        
-        logger.info("Encoding Done!")
-
-    def updateDataset(self):
-        logger.info("Updating datasets... (This may took a while)")
-
-        APITOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJlemFhckBrYXplZS5pZCIsImlhdCI6MTY3NTgyMTY2Mn0.eprZiRQUjiWjbfZYlbziT6sXG-34f2CnQCSy3yhAh6I"
-        r = requests.get("http://103.150.87.245:3001/api/profile/list-photo", headers={'Authorization': 'Bearer ' + APITOKEN})
-
-        datas = r.json()["data"]
-
-        for data in tqdm(datas, file=sys.stdout):
-            userID = data["user_id"]
-            url = data["photo"]
-
-            r = requests.get(url)
-
-            filename = f'{CWD}/data/dataset/{userID}.jpg'
-            
-            # Save grabbed image to {CWD}/data/faces/
-            with open(filename, 'wb') as f:
-                f.write(r.content)
-            
-            self.imgAugmentation(filename)
-
-        logger.info("Datasets updated!")
 
     def convertBGRtoRGB(self, frame):
         return frame[:, :, ::-1]
@@ -237,53 +147,7 @@ class RecogService:
         else:
             value = (linear_val + ((1.0 - linear_val) * math.pow((linear_val - 0.5) * 2, 0.2))) * 100
             return str(round(value, 2)) + '%'
-        
-    def imgAugmentation(self, img):
-        input_img = Image.open(img)
-        input_img = input_img.convert('RGB')
-        # Flip Image
-        img_flip = ImageOps.flip(input_img)
-        img_flip.save(f"{img.split('.jpg')[0]}-flipped.jpg")
-        # Mirror Image 
-        img_mirror = ImageOps.mirror(input_img)
-        img_mirror.save(f"{img.split('.jpg')[0]}-mirrored.jpg")
-        # Rotate Image
-        img_rot1 = input_img.rotate(30)
-        img_rot1.save(f"{img.split('.jpg')[0]}-rotated1.jpg")
-        img_rot2 = input_img.rotate(330)
-        img_rot2.save(f"{img.split('.jpg')[0]}-rotated2.jpg")
-        # Zoom to face
-        try :
-            cv2_input = cv2.imread(img)
-            detector = cv2.FaceDetectorYN.create(f"{CWD}/ml-models/face_detection_yunet/face_detection_yunet_2022mar.onnx", "", (320, 320))
-            height, width, channels = cv2_input.shape
-            detector.setInputSize((width, height))
-            channel, faces = detector.detect(cv2_input)
-            faces = faces if faces is not None else []
-            boxes = []
-            for face in faces:
-                box = list(map(int, face[:4]))
-                boxes.append(box)
-                x = box[0]
-                y = box[1]
-                w = box[2]
-                h = box[3]
-                faceCropped = cv2_input[y:y + h, x:x + w]
-            if len(boxes) == 1:
-                cv2.imwrite(f"{img.split('.jpg')[0]}-zoomed.jpg", faceCropped)
-        except :
-           pass
-        # Adjust Brightness
-        enhancer = ImageEnhance.Brightness(input_img)
-        im_darker = enhancer.enhance(0.5)
-        im_darker.save(f"{img.split('.jpg')[0]}-darker1.jpg")
-        im_darker2 = enhancer.enhance(0.7)
-        im_darker2.save(f"{img.split('.jpg')[0]}-darker2.jpg")
-        enhancer = ImageEnhance.Brightness(input_img)
-        im_darker = enhancer.enhance(1.2)
-        im_darker.save(f"{img.split('.jpg')[0]}-brighter1.jpg")
-        im_darker2 = enhancer.enhance(1.5)
-        im_darker2.save(f"{img.split('.jpg')[0]}-brighter2.jpg")
 
 recogService = RecogService()
-recogService.encodeFaces()
+models = Models()
+models.encodeFaces()
