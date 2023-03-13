@@ -4,6 +4,9 @@ from ..load_models import Models
 
 CWD = os.getcwd()
 
+models = Models()
+models.encodeFaces()
+
 # Module specific business logic (will be use for endpoints)
 class RecogService:
     def __init__(self):
@@ -42,7 +45,7 @@ class RecogService:
 
         filenameDatas = {"timeNow": timeNow, "id": filename.split(f"{timeNow}/")[1].split("/data")[0]}
 
-        filenames, confidences = Models.getFaceCoordinates(frame, filenameDatas)
+        filenames, confidences = models.getFaceCoordinates(frame, filenameDatas)
 
         if len(filenames) == 0:
             logger.info("API return success with exception: No face detected. Files removed")
@@ -77,20 +80,13 @@ class RecogService:
     def getTimeNow(self):
         # before: %d-%b-%y.%H-%M-%S
         return datetime.datetime.now().strftime("%Y%m%d")
-    
-    def resize(self, filename: str, resolution: int):
-        frame = cv2.imread(filename)
-        if frame.shape[0] != resolution or frame.shape[1] != resolution:
-            return cv2.resize(frame, (0, 0), fx=1-(frame.shape[1]-resolution)/frame.shape[1], fy=1-(frame.shape[1]-resolution)/frame.shape[1])
-        else:
-            return frame
 
     def recog(self, filename: str):
         logger.info("Recognizing faces into user IDs")
         # Read image as cv2
         frame = cv2.imread(filename)
 
-        frame = self.resize(filename, 480)
+        frame = models.resize(filename, 480)
         frame = self.convertBGRtoRGB(frame)
 
         faceNames = list(self.getFaceNames(frame))
@@ -118,17 +114,16 @@ class RecogService:
         face_names = []
         for face_encoding in face_encodings:
             # See if the face is a match for the known face(s)
-            matches = face_recognition.compare_faces(Models.known_face_encodings, face_encoding)
+            matches = face_recognition.compare_faces(models.known_face_encodings, face_encoding)
             name = "Unknown"
             confidence = '0%'
 
             # Calculate the shortest distance to face
-            print(f"service: {len(Models.known_face_encodings)}", flush=True)
-            face_distances = face_recognition.face_distance(Models.known_face_encodings, face_encoding)
+            face_distances = face_recognition.face_distance(models.known_face_encodings, face_encoding)
 
             best_match_index = np.argmin(face_distances)
             if matches[best_match_index]:
-                name = Models.known_face_names[best_match_index]
+                name = models.known_face_names[best_match_index]
                 confidence = self.faceConfidence(face_distances[best_match_index])
             
             face_names.append(f'{name} ({confidence})')
@@ -147,7 +142,5 @@ class RecogService:
         else:
             value = (linear_val + ((1.0 - linear_val) * math.pow((linear_val - 0.5) * 2, 0.2))) * 100
             return str(round(value, 2)) + '%'
-
+        
 recogService = RecogService()
-models = Models()
-models.encodeFaces()

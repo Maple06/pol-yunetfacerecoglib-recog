@@ -35,8 +35,6 @@ class Models:
                 self.known_face_names.append(image)
             except IndexError:
                 pass
-
-        print(f"loadmod: {len(self.known_face_encodings)}", flush=True)
         
         logger.info("Encoding Done!")
 
@@ -157,3 +155,10 @@ class Models:
 
         logger.info(f"Face grab success. Got total faces of {len(filenames)}")
         return (filenames, confidences)
+    
+    def resize(self, filename: str, resolution: int):
+        frame = cv2.imread(filename)
+        if frame.shape[0] != resolution or frame.shape[1] != resolution:
+            return cv2.resize(frame, (0, 0), fx=1-(frame.shape[1]-resolution)/frame.shape[1], fy=1-(frame.shape[1]-resolution)/frame.shape[1])
+        else:
+            return frame
