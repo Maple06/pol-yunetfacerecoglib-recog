@@ -65,22 +65,11 @@ class Models:
         logger.info("Datasets updated!")
 
     def imgAugmentation(self, img):
-        input_img = Image.open(img)
-        input_img = input_img.convert('RGB')
-        # Flip Image
-        img_flip = ImageOps.flip(input_img)
-        img_flip.save(f"{img.split('.jpg')[0]}-flipped.jpg")
-        # Mirror Image 
-        img_mirror = ImageOps.mirror(input_img)
-        img_mirror.save(f"{img.split('.jpg')[0]}-mirrored.jpg")
-        # Rotate Image
-        img_rot1 = input_img.rotate(30)
-        img_rot1.save(f"{img.split('.jpg')[0]}-rotated1.jpg")
-        img_rot2 = input_img.rotate(330)
-        img_rot2.save(f"{img.split('.jpg')[0]}-rotated2.jpg")
         # Zoom to face
         try :
-            cv2_input = cv2.imread(img)
+            frame = Image.open(img)
+            frame = frame.convert("RGB")
+            cv2_input = numpy.array(frame)
             detector = cv2.FaceDetectorYN.create(f"{CWD}/ml-models/face_detection_yunet/face_detection_yunet_2022mar.onnx", "", (320, 320))
             height, width, channels = cv2_input.shape
             detector.setInputSize((width, height))
@@ -96,9 +85,22 @@ class Models:
                 h = box[3]
                 faceCropped = cv2_input[y:y + h, x:x + w]
             if len(boxes) == 1:
-                cv2.imwrite(f"{img.split('.jpg')[0]}-zoomed.jpg", faceCropped)
+                cv2.imwrite(img , cv2.cvtColor(faceCropped, cv2.COLOR_BGR2RGB))
         except :
            pass
+        input_img = Image.open(img)
+        input_img = input_img.convert('RGB')
+        # Flip Image
+        img_flip = ImageOps.flip(input_img)
+        img_flip.save(f"{img.split('.jpg')[0]}-flipped.jpg")
+        # Mirror Image 
+        img_mirror = ImageOps.mirror(input_img)
+        img_mirror.save(f"{img.split('.jpg')[0]}-mirrored.jpg")
+        # Rotate Image
+        img_rot1 = input_img.rotate(30)
+        img_rot1.save(f"{img.split('.jpg')[0]}-rotated1.jpg")
+        img_rot2 = input_img.rotate(330)
+        img_rot2.save(f"{img.split('.jpg')[0]}-rotated2.jpg")
         # Adjust Brightness
         enhancer = ImageEnhance.Brightness(input_img)
         im_darker = enhancer.enhance(0.5)

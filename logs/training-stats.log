@@ -23,3 +23,6 @@
 2023-03-13 16:16:31,409 - app - INFO - getFaceCoordinates:158 - Face grab success. Got total faces of 1
 2023-03-13 16:16:31,413 - app - INFO - recog:85 - Recognizing faces into user IDs
 2023-03-13 16:16:33,151 - app - INFO - process:77 - API return success. Request fulfilled.
+2023-03-16 13:21:56,759 - app - INFO - updateDataset:44 - Updating datasets... (This may took a while)
+2023-03-16 13:22:59,364 - app - INFO - updateDataset:44 - Updating datasets... (This may took a while)
+2023-03-16 13:24:07,448 - app - INFO - updateDataset:44 - Updating datasets... (This may took a while)
